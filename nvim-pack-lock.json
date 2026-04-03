@@ -1,5 +1,9 @@
 {
   "plugins": {
+    "agentic.nvim": {
+      "rev": "9c40fc5228d22fbde370b723b5a738cbcb68b084",
+      "src": "https://github.com/carlos-algms/agentic.nvim"
+    },
     "blink.cmp": {
       "rev": "679a2ffad4bae720bb12e6bcdf57b0dd8b8a80f8",
       "src": "https://github.com/saghen/blink.cmp"
@@ -7,6 +11,21 @@
     "conform.nvim": {
       "rev": "086a40dc7ed8242c03be9f47fbcee68699cc2395",
       "src": "https://github.com/stevearc/conform.nvim"
+    },
+    "coq.artifacts": {
+      "rev": "ef5f21d638ccc456cfa5b8d0ab37093cefe48c8b",
+      "src": "https://github.com/ms-jpq/coq.artifacts",
+      "version": "'artifacts'"
+    },
+    "coq.thirdparty": {
+      "rev": "2bd969a2bcd2624f9c260b1000957c7e665e308e",
+      "src": "https://github.com/ms-jpq/coq.thirdparty",
+      "version": "'3p'"
+    },
+    "coq_nvim": {
+      "rev": "d939a34ceb2b57d2937890337a4aa75eb55e18a8",
+      "src": "https://github.com/ms-jpq/coq_nvim",
+      "version": "'coq'"
     },
     "dracula.nvim": {
       "rev": "ae752c13e95fb7c5f58da4b5123cb804ea7568ee",
@@ -32,6 +51,10 @@
     "lualine.nvim": {
       "rev": "47f91c416daef12db467145e16bed5bbfe00add8",
       "src": "https://github.com/nvim-lualine/lualine.nvim"
+    },
+    "marks.nvim": {
+      "rev": "f353e8c08c50f39e99a9ed474172df7eddd89b72",
+      "src": "https://github.com/chentoast/marks.nvim"
     },
     "mason-lspconfig.nvim": {
       "rev": "25f609e7fca78af7cede4f9fa3af8a94b1c4950b",
@@ -76,6 +99,11 @@
     "nvim-web-devicons": {
       "rev": "40e9d5a6cc3db11b309e39593fc7ac03bb844e38",
       "src": "https://github.com/nvim-tree/nvim-web-devicons"
+    },
+    "obsidian.nvim": {
+      "rev": "5392f49c755d28e663147bc6012f0d8545b326cf",
+      "src": "https://github.com/obsidian-nvim/obsidian.nvim",
+      "version": ">=0.0.0"
     },
     "oil.nvim": {
       "rev": "0fcc83805ad11cf714a949c98c605ed717e0b83e",

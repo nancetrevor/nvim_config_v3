@@ -74,6 +74,9 @@ require("oil").setup({
 	view_options = {
 		show_hidden = true,
 	},
+	keymaps = {
+		["q"] = { "actions.close", mode = "n" },
+	},
 })
 
 -- Oil Keymaps
@@ -169,7 +172,7 @@ require("lualine").setup({
 	},
 })
 
--- cmp - completion engine
+-- Completion Engine
 pack({
 	"https://github.com/rafamadriz/friendly-snippets",
 	"https://github.com/saghen/blink.cmp",
@@ -217,7 +220,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 pack({ "https://github.com/folke/trouble.nvim" })
 require("trouble").setup()
 
-vim.keymap.set("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>")
+map("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", opts)
 
 -- Todo-Comments
 pack({ "https://github.com/folke/todo-comments.nvim" })
@@ -277,8 +280,18 @@ map("n", "<leader>5", function()
 	harpoon:list():select(5)
 end)
 
--- Folder setup
-
 -- Lazygit setup
 pack({ "https://github.com/kdheepak/lazygit.nvim" })
 map("n", "<leader>lg", "<cmd>LazyGit<cr>", opts)
+
+-- Marks setup
+pack({ "https://github.com/chentoast/marks.nvim" })
+require("marks").setup({})
+map("n", "<leader>lm", "<cmd>MarksListBuf<cr>", opts)
+
+-- AI integration :)
+pack({ "https://github.com/carlos-algms/agentic.nvim" })
+require("agentic").setup({
+	provider = "codex-acp",
+})
+map("n", "<leader>oa", "<cmd>lua require('agentic').toggle()<cr>", opts)
