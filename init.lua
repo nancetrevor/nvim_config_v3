@@ -64,6 +64,34 @@ map("n", "<leader>ut", function()
 	})
 end, opts)
 
+local virtual_lines_enabled = true
+
+vim.diagnostic.config({
+	virtual_lines = {
+		prefix = "●",
+		spacing = 2,
+		current_line = true,
+	},
+	underline = true,
+	signs = true,
+	severity_sort = true,
+})
+
+vim.keymap.set("n", "<leader>td", function()
+	virtual_lines_enabled = not virtual_lines_enabled
+
+	vim.diagnostic.config({
+
+		virtual_lines = virtual_lines_enabled and {
+
+			prefix = "●",
+
+			spacing = 2,
+
+			current_line = true,
+		} or false,
+	})
+end, {})
 -- Icons
 pack({ "https://github.com/nvim-tree/nvim-web-devicons" })
 
@@ -99,6 +127,7 @@ require("nvim-ts-autotag").setup()
 
 --Treesitter setup
 pack({ "https://github.com/nvim-treesitter/nvim-treesitter" })
+require("nvim-treesitter").setup({})
 require("nvim-treesitter").install({
 	"rust",
 	"javascript",
@@ -121,6 +150,11 @@ require("nvim-treesitter").install({
 	"swift",
 	"tmux",
 })
+vim.api.nvim_create_autocmd("FileType", {
+	callback = function()
+		pcall(vim.treesitter.start)
+	end,
+})
 
 -- LSP & Mason config setup
 pack({ "https://github.com/neovim/nvim-lspconfig" })
@@ -140,7 +174,7 @@ require("telescope").setup()
 local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<leader>ff", builtin.find_files)
 vim.keymap.set("n", "<leader>fg", builtin.live_grep)
-vim.keymap.set("n", "<leader>fc", builtin.grep_string)
+vim.keymap.set("n", "<leader>fw", builtin.grep_string)
 vim.keymap.set("n", "<leader>fm", builtin.marks)
 vim.keymap.set("n", "<leader>faf", builtin.treesitter)
 vim.keymap.set("n", "<leader>fr", builtin.oldfiles)
@@ -230,8 +264,7 @@ map("n", "<leader>cc", "<cmd>Trouble todo toggle<cr>", opts)
 map("n", "<leader>fc", "<cmd>TodoTelescope<cr>", opts)
 
 -- Markdown renderer
-vim.pack.add({
-	"https://github.com/nvim-treesitter/nvim-treesitter",
+pack({
 	"https://github.com/nvim-mini/mini.nvim",
 	"https://github.com/MeanderingProgrammer/render-markdown.nvim",
 })
@@ -289,9 +322,7 @@ pack({ "https://github.com/chentoast/marks.nvim" })
 require("marks").setup({})
 map("n", "<leader>lm", "<cmd>MarksListBuf<cr>", opts)
 
--- AI integration :)
-pack({ "https://github.com/carlos-algms/agentic.nvim" })
-require("agentic").setup({
-	provider = "codex-acp",
-})
-map("n", "<leader>oa", "<cmd>lua require('agentic').toggle()<cr>", opts)
+-- TODO: maybe add flash.nvim
+
+-- Terraform setup
+pack({ "https://github.com/hashivim/vim-terraform" })
